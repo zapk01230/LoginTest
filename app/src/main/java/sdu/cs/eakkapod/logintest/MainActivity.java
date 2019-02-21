@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "กรอกข้อมูลให้ครบทุกช่อง", Toast.LENGTH_SHORT).show();
                 }
 
+                //Check Username and Password
+                if ((userString.equals("admin")) && (passString.equals("1234"))) {
+                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                } else {Toast.makeText(getApplicationContext(),"กรอกข้อมูลไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
+
+                }
+
             }
         });//end OnClickListener
 
