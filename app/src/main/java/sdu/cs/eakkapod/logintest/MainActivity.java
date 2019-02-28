@@ -1,5 +1,6 @@
 package sdu.cs.eakkapod.logintest;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -35,16 +36,21 @@ public class MainActivity extends AppCompatActivity {
                 //Check ค่าว่าง
                 if ((nameString.length()==0)||(userString.length()==0)||(passString.length()==0)) {
                     Toast.makeText(getApplicationContext(), "กรอกข้อมูลให้ครบทุกช่อง", Toast.LENGTH_SHORT).show();
-                }
+                } else {
 
-                //Check Username and Password
-                if ((userString.equals("admin")) && (passString.equals("1234"))) {
-                    Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
-                } else {Toast.makeText(getApplicationContext(),"กรอกข้อมูลไม่ถูกต้อง",Toast.LENGTH_SHORT).show();
+                    //Check Username and Password
+                    if ((userString.equals("admin")) && (passString.equals("1234"))) {
+                        Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
 
-                }
-
-            }
+                        //ส่งข้อมูลไปหน้า Menu
+                        Intent menuIntent = new Intent(MainActivity.this, MenuActivity.class);
+                        menuIntent.putExtra("Name", nameString);
+                        startActivity(menuIntent);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "กรอกข้อมูลไม่ถูกต้อง", Toast.LENGTH_SHORT).show();//Toast คือการแสคงข้อความระยะสั้นๆ
+                            }
+                        }
+                                        }
         });//end OnClickListener
 
     }//end onCreate
